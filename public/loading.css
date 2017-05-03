@@ -1,3 +1,7 @@
+body {
+  background: #b4b4b4;
+}
+
 @keyframes ball-scale-ripple-multiple {
   0% {
     transform: scale(0.1);
@@ -13,8 +17,13 @@
 }
 
 .ball-scale-ripple-multiple {
-  position: relative;
   transform: translateY(-25px);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 0;
+  right: 0;
 }
 
 .ball-scale-ripple-multiple > div:nth-child(0) {
