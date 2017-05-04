@@ -1,11 +1,21 @@
 import { combineReducers } from 'redux';
 import types from '../constants/ActionTypes';
 
-export function fetchData(state = [], action) {
+const initState = {
+  playlists: [],
+  total: 0
+}
+
+export function fetchData(state = initState, action) {
   switch (action.type) {
     case types.TOP_PLAY_LIST: {
-      console.log(action);
-      return action
+      const { status } = action;
+      const { playlists = [], total = 0 } = action.response;
+      return {
+        status,
+        playlists,
+        total
+      };
     }
     default: {
       return state;
@@ -14,10 +24,10 @@ export function fetchData(state = [], action) {
 }
 
 export default combineReducers({
-  items: fetchData,
+  topPlayListData: fetchData,
 });
 
 // selector
-export const getState = (state) => {
-  return state.playList
+export const getList = (state) => {
+  return state.playList.topPlayListData
 }

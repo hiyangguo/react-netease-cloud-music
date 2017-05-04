@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "material-ui": "^0.18.0",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
@@ -59,7 +60,7 @@
     "whatwg-fetch": "2.0.2"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "start": "PORT=3510 node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "server": "PORT=3211 node node_modules/NeteaseCloudMusicApi/app.js"
@@ -94,6 +95,10 @@
     ]
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "no-unused-vars": "off",
+      "array-callback-return": "off"
+    }
   }
 }

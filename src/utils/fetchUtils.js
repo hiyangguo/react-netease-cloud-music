@@ -1,6 +1,9 @@
 import fetch from 'isomorphic-fetch';
 import fetchJsonp from './fetchJsonp';
 import status from '../constants/ResponseStatus';
+import checkResponseCode from './checkResponseCode';
+import checkDataStatus from './checkDataStatus';
+
 
 export function checkHttpStatus(response) {
 
@@ -32,9 +35,6 @@ export function stringifyJSON(data) {
 export function fetchJson(url, options = {}) {
   const defaultOptions = {
     method: 'get',
-
-    //Fetch 请求默认是不带 cookie 的，需要设置 fetch(url, {credentials: 'include'})
-    credentials: 'include',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
@@ -160,9 +160,8 @@ export function fetchData(url, options, cb) {
       .then(checkHttpStatus)
       .then(parseJSON)
       .then((data) => {
-
-        const response = data;
-        if (data) {
+        const response = checkResponseCode(data);
+        if (checkDataStatus(response, dispatch, options)) {
           if (action.success) {
             const successAction = action.success(response, actionProps);
             dispatch(successAction);
@@ -171,7 +170,6 @@ export function fetchData(url, options, cb) {
         } else {
           action.failure && dispatch(action.failure('fetch error', actionProps));
         }
-
         completeCallback(response, dispatch);
         return data;
       }).then(cb);
