@@ -1,7 +1,6 @@
 import { API_TOP_PLAY_LIST } from '../constants/API';
-import { createAction } from 'redux-actions';
 import types from '../constants/ActionTypes';
-import { createFetchAction, fetchData, stringifyJSON } from '../utils/fetchUtils';
+import { createFetchAction, fetchData } from '../utils/fetchUtils';
 
 
 const fetchDataAction = createFetchAction(types.TOP_PLAY_LIST)

@@ -1,8 +1,9 @@
 /** Libs **/
 import { combineReducers } from 'redux';
-import playList from './playList'
+import playList from './playList';
+import personalized from './personalized';
 
-// 此时的state分为了两部分
 export default combineReducers({
-  playList
+  playList,
+  personalized
 });
