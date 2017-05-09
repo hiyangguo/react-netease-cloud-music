@@ -63,7 +63,7 @@
     "start": "PORT=3510 node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "server": "PORT=3211 node server/index.js"
+    "server": "cd ../NeteaseCloudMusicApi && npm run start"
   },
   "jest": {
     "collectCoverageFrom": [

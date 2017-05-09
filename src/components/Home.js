@@ -49,14 +49,21 @@ export default class TopPlayList extends Component {
   render() {
     const { topPlayListData: { status, playlists: items }, personalizedData: { result } } = this.props;
     return (
-      <div style={styles.root}>
+      <div>
         {
-          status === ResponseStatus.REQUEST && (<CircularProgress style={{ marginTop: '20px' }}/>)
+          status === ResponseStatus.REQUEST && (<CircularProgress style={{
+            position: 'absolute',
+            margin: '20px auto',
+            left: 0,
+            right: 0
+          }}/>)
         }
         {
           status === ResponseStatus.SUCCESS && (
             <GridList
-              cellHeight={180}
+              cellHeight={200}
+              className="personalized-data-list"
+              style={styles.root}
             >
               <Subheader style={styles.subheader}>推荐歌单</Subheader>
               {
@@ -64,6 +71,7 @@ export default class TopPlayList extends Component {
                   const { id, name, copywriter, picUrl } = obj;
                   return (
                     <GridTile
+                      className="grid-tile"
                       key={id}
                       title={name}
                       subtitle={<span>by <b>{copywriter}</b></span>}
