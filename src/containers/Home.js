@@ -11,6 +11,7 @@ const mapState2Props = state => {
   return {
     topPlayListData: selector.getList(state),
     personalizedData: personalizedSelector.getList(state),
+    bannerData: personalizedSelector.getBanner(state)
   }
 }
 
@@ -19,6 +20,7 @@ const mapDispacth2Props = dispatch => {
   return {
     onFetchData: actions.fetchTopPlayList,
     onFetchPersonalized: actions.fetchPersonalized,
+    onFetchBannerData: actions.fetchBanner
   };
 }
 

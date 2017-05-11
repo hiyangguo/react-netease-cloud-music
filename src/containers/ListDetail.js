@@ -1,7 +1,7 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Home from '../components/Home';
+import ListDetail from '../components/ListDetail';
 import * as actionsCreators from '../actions/topPlayList';
 import * as personalizedActionsCreators from '../actions/personalized';
 import * as selector from '../reducers/playList';
@@ -22,4 +22,4 @@ const mapDispacth2Props = dispatch => {
   };
 }
 
-export default connect(mapState2Props, mapDispacth2Props)(Home)
+export default connect(mapState2Props, mapDispacth2Props)(ListDetail)

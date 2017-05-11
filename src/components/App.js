@@ -41,6 +41,7 @@ class App extends Component {
     };
   }
 
+
   render() {
     const { style, titleStyle, iconButtonStyle } = styles;
     return (
@@ -65,7 +66,7 @@ class App extends Component {
           zIndex: 10
         }}>
           <Avatar
-            image=""
+            // image=""
             style={{
               width: '50px',
               height: '50px',

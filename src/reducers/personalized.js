@@ -21,11 +21,33 @@ export function fetchData(state = initState, action) {
   }
 }
 
+export function fetchBanner(state = initState, action) {
+  switch (action.type) {
+    case types.BANNER: {
+      const { status } = action;
+      const { banners = [] } = action.response;
+      return {
+        status,
+        banners
+      };
+    }
+    default: {
+      return state;
+    }
+  }
+}
+
+
 export default combineReducers({
-  personalizedData: fetchData
+  personalizedData: fetchData,
+  bannerData: fetchBanner
 });
 
 // selector
 export const getList = (state) => {
   return state.personalized.personalizedData
+}
+
+export const getBanner = (state) => {
+  return state.personalized.bannerData
 }
